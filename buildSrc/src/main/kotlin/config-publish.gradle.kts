@@ -43,15 +43,15 @@ val sourcesJar by tasks.existing(AbstractArchiveTask::class) {
     }
 }
 
-val prefix = project.name.substringAfter("paperweight-")
+val prefix = project.name.substringAfter("leavesweight-")
 
 gradlePlugin {
-    website.set("https://github.com/PaperMC/paperweight")
-    vcsUrl.set("https://github.com/PaperMC/paperweight")
-    plugins.create("paperweight-$prefix") {
-        id = "io.papermc.paperweight." + prefix
-        displayName = "paperweight $prefix"
-        tags.set(listOf("paper", "minecraft"))
+    website.set("https://github.com/LeavesMC/leavesweight")
+    vcsUrl.set("https://github.com/LeavesMC/leavesweight")
+    plugins.create("leavesweight-$prefix") {
+        id = "org.leavesmc.leavesweight.$prefix"
+        displayName = "leavesweight $prefix"
+        tags.set(listOf("paper", "leaves", "minecraft"))
     }
 }
 
@@ -109,11 +109,11 @@ publishing {
 }
 
 fun MavenPom.pomConfig() {
-    val repoPath = "PaperMC/paperweight"
+    val repoPath = "LeavesMC/leavesweight"
     val repoUrl = "https://github.com/$repoPath"
 
-    name.set("paperweight")
-    description.set("Gradle plugin for the PaperMC project")
+    name.set("leavesweight")
+    description.set("Gradle plugin for the LeavesMC project")
     url.set(repoUrl)
     inceptionYear.set("2020")
 
@@ -136,6 +136,11 @@ fun MavenPom.pomConfig() {
             name.set("Kyle Wood")
             email.set("kyle@denwav.dev")
             url.set("https://github.com/DenWav")
+        }
+        developer{
+            id.set("MC_XiaoHei")
+            name.set("MC_XiaoHei")
+            email.set("xiaohei.xor7studio@foxmail.com")
         }
     }
 
