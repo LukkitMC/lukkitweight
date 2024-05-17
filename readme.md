@@ -1,22 +1,24 @@
-## paperweight
+## leavesweight
 
-`paperweight` consists of three Gradle plugins:
-- `paperweight-core`: Used to build Paper
-- `paperweight-patcher`: Used to create forks of Paper or other `paperweight-patcher`-based forks
-- `paperweight-userdev`: Used to develop internals plugins using Mojang mappings
+**IMPORTANT: leavesweight is a branch of paperweight, dedicated to providing more user-friendly development tools for LeavesMC. It is open source and follows the LGPL2.1 license.**
+
+`leavesweight` consists of only one Gradle plugins now:
+- `leavesweight-patcher`: Used to create Leaves, Lumina or other `leavesweight-patcher`-based forks
 
 ### How to use this for testing:
 
-- Install `paperweight` to Maven Local:
+- Install `leavesweight` to Maven Local:
 ```bash
 ./gradlew publishToMavenLocal
 ```
 - Add `mavenLocal()` for plugin resolution in your test project
   (see the [Gradle docs](https://docs.gradle.org/current/userguide/plugins.html#sec:custom_plugin_repositories) for more details)
-- Adjust the `paperweight` version in your test project
-  - Local versions of `paperweight` will use have the `-SNAPSHOT` suffix in the version from `gradle.properties` replaced by `-LOCAL-SNAPSHOT`
+- Adjust the `leavesweight` version in your test project
+  - Local versions of `leavesweight` will use have the `-SNAPSHOT` suffix in the version from `gradle.properties` replaced by `-LOCAL-SNAPSHOT`
 
-> Most output `paperweight` creates goes into `<project-root>/.gradle/caches/paperweight`
+> Most output `leavesweight` creates goes into `<project-root>/.gradle/caches/paperweight`
+>
+> (yeah, we use the same path as paperweight.)
 
 ### Debugging
 
