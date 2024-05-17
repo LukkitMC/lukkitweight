@@ -60,6 +60,8 @@ abstract class CheckoutRepo : DefaultTask() {
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
 
+    private val debugOutput = System.getProperty("leavesweight.debugOutput", "false") == "true"
+
     init {
         @Suppress("LeakingThis")
         run {
@@ -91,9 +93,11 @@ abstract class CheckoutRepo : DefaultTask() {
         val git = Git(dir)
         git("remote", "remove", "origin").runSilently(silenceErr = true) // can fail
         git("remote", "add", "origin", urlText).executeSilently(silenceErr = true)
+        if(debugOutput) println("Fetching $repoName at ${ref.get()}, shallowClone=${shallowClone.get()}")
         git.fetch()
-
+        if(debugOutput) println("Checking out $repoName at ${ref.get()}")
         git("checkout", "-f", "FETCH_HEAD").executeSilently(silenceErr = true)
+        if(debugOutput) println("Cleaning $repoName")
         git("clean", "-fqd").executeSilently(silenceErr = true)
 
         if (initializeSubmodules.get()) {
@@ -102,6 +106,10 @@ abstract class CheckoutRepo : DefaultTask() {
     }
 
     private fun Git.fetch() {
+        if (System.getProperty("leavesweight.skipFetch", "false") == "true") {
+            println("Skipped fetch paper repo")
+            return
+        }
         if (shallowClone.get()) {
             this("fetch", "--depth", "1", "origin", ref.get()).executeSilently(silenceErr = true)
         } else {
