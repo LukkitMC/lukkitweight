@@ -91,11 +91,22 @@ val shadowJar by tasks.existing(ShadowJar::class) {
     }
 }
 
+val isSnapshot = project.version.toString().endsWith("-SNAPSHOT")
+
 publishing {
     repositories {
-        maven("https://repo.papermc.io/repository/maven-snapshots/") {
-            credentials(PasswordCredentials::class)
-            name = "paper"
+        val url = if (isSnapshot) {
+            "https://repo.leavesmc.org/snapshots/"
+        } else {
+            "https://repo.leavesmc.org/releases/"
+        }
+
+        maven(url) {
+            name = "leaves"
+            credentials(PasswordCredentials::class) {
+                username = System.getenv("LEAVES_USERNAME")
+                password = System.getenv("LEAVES_PASSWORD")
+            }
         }
     }
 
