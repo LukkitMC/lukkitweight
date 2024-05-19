@@ -1,10 +1,7 @@
-leavesweight is a Gradle plugin for the LeavesMC project.
+paperweight is a Gradle plugin for the PaperMC project.
 
-Original software ("paperweight") Copyright (c) 2023 Kyle Wood (DenWav)
-                                                     Contributors
-
-Modifications for "leavesweight" (c) 2024 violetc (s-yh-china)
-                                          Contributors
+Copyright (c) 2023 Kyle Wood (DenWav)
+                   Contributors
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
