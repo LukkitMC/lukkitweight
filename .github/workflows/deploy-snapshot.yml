@@ -20,7 +20,7 @@ jobs:
           java-version: 17
           distribution: 'temurin'
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
       - name: Get project version
         id: get_version
         shell: bash
@@ -28,8 +28,7 @@ jobs:
           project_version=$(./gradlew -q --console=plain printVersion --no-daemon)
           echo version=$project_version >> $GITHUB_OUTPUT
       - name: Deploy snapshot version
-        if: endsWith(steps.get_version.outputs.version, '-SNAPSHOT')
         run: ./gradlew -Dorg.gradle.parallel=true publish --no-daemon --stacktrace
         env:
-          ORG_GRADLE_PROJECT_paperUsername: ${{ secrets.DEPLOY_USER }}
-          ORG_GRADLE_PROJECT_paperPassword: ${{ secrets.DEPLOY_PASS }}
+          LEAVES_USERNAME: ${{ secrets.NEW_REPO_USERNAME }}
+          LEAVES_PASSWORD: ${{ secrets.NEW_REPO_PASSWORD }}
