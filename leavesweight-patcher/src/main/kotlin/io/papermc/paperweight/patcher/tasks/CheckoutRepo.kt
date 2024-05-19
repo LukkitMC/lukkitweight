@@ -93,11 +93,11 @@ abstract class CheckoutRepo : DefaultTask() {
         val git = Git(dir)
         git("remote", "remove", "origin").runSilently(silenceErr = true) // can fail
         git("remote", "add", "origin", urlText).executeSilently(silenceErr = true)
-        if(debugOutput) println("Fetching $repoName at ${ref.get()}, shallowClone=${shallowClone.get()}")
+        if (debugOutput) println("Fetching $repoName at ${ref.get()}, shallowClone=${shallowClone.get()}")
         git.fetch()
-        if(debugOutput) println("Checking out $repoName at ${ref.get()}")
+        if (debugOutput) println("Checking out $repoName at ${ref.get()}")
         git("checkout", "-f", "FETCH_HEAD").executeSilently(silenceErr = true)
-        if(debugOutput) println("Cleaning $repoName")
+        if (debugOutput) println("Cleaning $repoName")
         git("clean", "-fqd").executeSilently(silenceErr = true)
 
         if (initializeSubmodules.get()) {
