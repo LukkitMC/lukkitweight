@@ -83,6 +83,17 @@ open class PaperweightPatcherExtension(project: Project, private val objects: Ob
         upstreams.registerFactory(PaperRepoPatcherUpstream::class.java) { name -> DefaultPaperRepoPatcherUpstream(name, objects, tasks, layout) }
     }
 
+    fun usePaperArchiveUpstream(refProvider: Provider<String>, versionProvider: Provider<String>, action: Action<PaperRepoPatcherUpstream>) {
+        upstreams {
+            register<PaperRepoPatcherUpstream>("paper") {
+                url.set(github("PaperMC", "Paper-archive"))
+                ref.set(refProvider)
+
+                action.execute(this)
+            }
+        }
+    }
+
     fun usePaperUpstream(refProvider: Provider<String>, action: Action<PaperRepoPatcherUpstream>) {
         upstreams {
             register<PaperRepoPatcherUpstream>("paper") {
