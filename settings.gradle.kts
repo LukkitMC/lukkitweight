@@ -2,8 +2,8 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "leavesweight"
+rootProject.name = "lukkitweight"
 
-include("paperweight-lib", "leavesweight-patcher")
+include("paperweight-lib", "lukkitweight-patcher")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

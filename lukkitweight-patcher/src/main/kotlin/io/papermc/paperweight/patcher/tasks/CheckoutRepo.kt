@@ -60,7 +60,7 @@ abstract class CheckoutRepo : DefaultTask() {
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
 
-    private val debugOutput = System.getProperty("leavesweight.debugOutput", "false") == "true"
+    private val debugOutput = System.getProperty("lukkitweight.debugOutput", "false") == "true"
 
     init {
         @Suppress("LeakingThis")
@@ -106,7 +106,7 @@ abstract class CheckoutRepo : DefaultTask() {
     }
 
     private fun Git.fetch() {
-        if (System.getProperty("leavesweight.skipFetch", "false") == "true") {
+        if (System.getProperty("lukkitweight.skipFetch", "false") == "true") {
             println("Skipped fetch paper repo")
             return
         }

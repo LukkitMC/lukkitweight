@@ -1,22 +1,22 @@
-## leavesweight
+## lukkitweight
 
-**IMPORTANT: leavesweight is a branch of paperweight, dedicated to providing more user-friendly development tools for LeavesMC. It is open source and follows the LGPL2.1 license.**
+**IMPORTANT: lukkitweight is a branch of paperweight, dedicated to providing more user-friendly development tools for LukkitMC. It is open source and follows the LGPL2.1 license.**
 
-`leavesweight` consists of only one Gradle plugins now:
-- `leavesweight-patcher`: Used to create Leaves, Lumina or other `leavesweight-patcher`-based forks
+`lukkitweight` consists of only one Gradle plugins now:
+- `lukkitweight-patcher`: Used to create lukkit or other `lukkitweight-patcher`-based forks
 
 ### How to use this for testing:
 
-- Install `leavesweight` to Maven Local:
+- Install `lukkitweight` to Maven Local:
 ```bash
 ./gradlew publishToMavenLocal
 ```
 - Add `mavenLocal()` for plugin resolution in your test project
   (see the [Gradle docs](https://docs.gradle.org/current/userguide/plugins.html#sec:custom_plugin_repositories) for more details)
-- Adjust the `leavesweight` version in your test project
-  - Local versions of `leavesweight` will use have the `-SNAPSHOT` suffix in the version from `gradle.properties` replaced by `-LOCAL-SNAPSHOT`
+- Adjust the `lukkitweight` version in your test project
+  - Local versions of `lukkitweight` will use have the `-SNAPSHOT` suffix in the version from `gradle.properties` replaced by `-LOCAL-SNAPSHOT`
 
-> Most output `leavesweight` creates goes into `<project-root>/.gradle/caches/paperweight`
+> Most output `lukkitweight` creates goes into `<project-root>/.gradle/caches/paperweight`
 >
 > (yeah, we use the same path as paperweight.)
 

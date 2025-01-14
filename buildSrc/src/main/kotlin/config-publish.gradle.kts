@@ -43,15 +43,15 @@ val sourcesJar by tasks.existing(AbstractArchiveTask::class) {
     }
 }
 
-val prefix = project.name.substringAfter("leavesweight-")
+val prefix = project.name.substringAfter("lukkitweight-")
 
 gradlePlugin {
-    website.set("https://github.com/LeavesMC/leavesweight")
-    vcsUrl.set("https://github.com/LeavesMC/leavesweight")
-    plugins.create("leavesweight-$prefix") {
-        id = "org.leavesmc.leavesweight.$prefix"
-        displayName = "leavesweight $prefix"
-        tags.set(listOf("paper", "leaves", "minecraft"))
+    website.set("https://github.com/lukkitMC/lukkitweight")
+    vcsUrl.set("https://github.com/lukkitMC/lukkitweight")
+    plugins.create("lukkitweight-$prefix") {
+        id = "org.lukkitmc.lukkitweight.$prefix"
+        displayName = "lukkitweight $prefix"
+        tags.set(listOf("paper", "lukkit", "minecraft"))
     }
 }
 
@@ -102,7 +102,7 @@ publishing {
         }
 
         maven(url) {
-            name = "leaves"
+            name = "lukkit"
             credentials(PasswordCredentials::class) {
                 username = System.getenv("LEAVES_USERNAME")
                 password = System.getenv("LEAVES_PASSWORD")
@@ -120,11 +120,11 @@ publishing {
 }
 
 fun MavenPom.pomConfig() {
-    val repoPath = "LeavesMC/leavesweight"
+    val repoPath = "lukkitMC/lukkitweight"
     val repoUrl = "https://github.com/$repoPath"
 
-    name.set("leavesweight")
-    description.set("Gradle plugin for the LeavesMC project")
+    name.set("lukkitweight")
+    description.set("Gradle plugin for the lukkitMC project")
     url.set(repoUrl)
     inceptionYear.set("2020")
 

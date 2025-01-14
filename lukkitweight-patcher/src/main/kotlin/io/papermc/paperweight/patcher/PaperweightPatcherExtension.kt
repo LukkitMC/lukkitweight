@@ -57,7 +57,7 @@ open class PaperweightPatcherExtension(project: Project, private val objects: Ob
     val reobfMappingsPatch: RegularFileProperty = objects.fileFrom(buildDataDir, "reobf-mappings-patch.tiny")
     val reobfPackagesToFix: ListProperty<String> = objects.listProperty()
 
-    val mainClass: Property<String> = objects.property<String>().convention("org.bukkit.craftbukkit.Main")
+    val mainClass: Property<String> = objects.property<String>().convention("org.lukkitmc.lukkit.Main")
     val bundlerJarName: Property<String> = objects.property<String>().convention(project.name.lowercase(Locale.ENGLISH))
 
     val decompileRepo: Property<String> = objects.property()
